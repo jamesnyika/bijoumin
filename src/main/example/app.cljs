@@ -7,7 +7,8 @@
    [re-frame.core :as rf]
    [shadow.expo :as expo]
    [example.events]
-   [example.subs]))
+   [example.subs]
+   [example.component :as c]))
 
 ;; must use defonce and must refresh full app so metro can fill these in
 ;; at live-reload time `require` does not exist and will cause errors
@@ -48,14 +49,20 @@
   (let [counter (rf/subscribe [:get-counter])]
     (fn []
 
-      [:> rn/View {:style (.-container styles)}
-       [:> rn/Text {:style (.-title styles)} "Clicked: " @counter]
-       [:> rn/TouchableOpacity {:style (.-button styles)
-                                :on-press #(rf/dispatch [:inc-counter])}
+      [c/view {:style (.-container styles)}
+        [c/input {:placeholder "React Native Element Input"}]
+        [c/text  {:style (.-title styles)} "Clicked: " @counter]
+        [c/touchableopacity {:style (.-button styles)
+                                 :on-press #(rf/dispatch [:inc-counter])}
+              [c/text {:style (.-buttonText styles)} "Click me, I'll count"]
 
-        [:> rn/Text {:style (.-buttonText styles)} "Click me, I'll count"]]
-       [:> rn/Image {:source splash-img :style {:width 200 :height 200}}]
-       [:> rn/Text {:style (.-label styles)} "Using: shadow-cljs+expo+reagent+re-frame"]])))
+        ]
+
+        [c/image {:source splash-img :style {:width 200 :height 200}}]
+        [c/text {:style (.-label styles)} "Using: shadow-cljs+expo+reagent+re-frame"]
+      ]
+
+)))
 
 (defn start
   {:dev/after-load true}
