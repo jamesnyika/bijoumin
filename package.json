@@ -1,6 +1,7 @@
 {
   "name":"bijoumin",
   "version": "1.0.0",
+  "repository": { "type": "git", "url": "https://github.com/jamesnyika/bijoumin.git" },
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "watch-cljs": "shadow-cljs watch app",
