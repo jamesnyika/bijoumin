@@ -6,7 +6,8 @@
  :dependencies
  [[reagent "0.8.1"]
   [re-frame "0.10.6"]
-  [cider/cider-nrepl "0.21.2-SNAPSHOT"]]
+  [re-frisk-remote "0.5.5"]
+  ]
 
  :builds
  {:app

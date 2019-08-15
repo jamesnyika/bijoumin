@@ -3,6 +3,7 @@
    ["expo" :as ex]
    ["react-native" :as rn]
    ["react" :as react]
+   [re-frisk-remote.core :refer [enable-re-frisk-remote!]]
    [reagent.core :as r]
    [re-frame.core :as rf]
    [shadow.expo :as expo]
@@ -10,9 +11,14 @@
    [example.subs]
    [example.component :as c]))
 
+
+
 ;; must use defonce and must refresh full app so metro can fill these in
 ;; at live-reload time `require` does not exist and will cause errors
 ;; must use path relative to :output-dir
+
+;; turns on re-frame-10x
+(enable-re-frisk-remote! {:enable-re-frame-10x? true})
 
 (defonce splash-img (js/require "../assets/shadow-cljs.png"))
 
